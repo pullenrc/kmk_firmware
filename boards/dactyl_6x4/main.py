@@ -18,6 +18,7 @@ Zoom_out = KC.LCTRL(KC.MINUS)
 
 split = Split()
 oled = OLED([128],[32],board.SCL,board.SDA)
+oled.layer_names = ['BASE','NUM/NAV', 'SYMBOLS', 'LHDE']
 layers_ext = Layers()
 
 # Cleaner key names
