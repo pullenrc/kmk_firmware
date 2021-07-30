@@ -7,7 +7,7 @@ from kmk.graphics import Graphics as Icon
 
 
 class OLED(Extension):
-    def __init__(self,width,height,scl,sda):
+    def __init__(self,width=[128],height=[64],scl=board.SCL,sda=board.SDA):
         self.enabled = True
         self.i2c_bus0 = None
         self.i2c_bus1 = None
@@ -39,12 +39,12 @@ class OLED(Extension):
 
     def init(self):
         #self.i2c_bus0 = busio.I2C(self.oled_scl[0], self.oled_sda[0])
-        #self.i2c_bus0 = busio.I2C(board.SCL, board.SDA)
+        self.i2c_bus0 = busio.I2C(self.oled_scl, self.oled_sda)
         for i in range(self.oled_count):
             self.oleds.append(
                 adafruit_ssd1306.SSD1306_I2C(
                     #self.oled_width[i], self.oled_height[i], self.i2c_bus0
-                    128, 32, busio.I2C(board.SCL, board.SDA)
+                    self.oled_width[i], self.oled_height[i], self.i2c_bus0
                 )
             )
         self.draw_logo(self.oleds[0], self.icon.logos["Warhorse"])

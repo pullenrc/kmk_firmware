@@ -17,7 +17,7 @@ Zoom_in = KC.LCTRL(KC.EQUAL)
 Zoom_out = KC.LCTRL(KC.MINUS)
 
 split = Split()
-oled = OLED([128],[32],[board.SCL],[board.SDA])
+oled = OLED([128],[32],board.SCL,board.SDA)
 layers_ext = Layers()
 
 # Cleaner key names
